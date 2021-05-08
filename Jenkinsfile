@@ -17,6 +17,8 @@ pipeline {
                 echo 'good morning'
               }
             }
+      }
+    }
      
     stage('Build') {
       parallel{
@@ -25,6 +27,8 @@ pipeline {
             echo 'good eve'
           }
     } 
+      }
+ }
     stage('Test') {
       steps {
         echo 'test'
@@ -39,8 +43,8 @@ pipeline {
           steps{
             echo 'good nyt'
           }
+      }
+   }
     }
-    
-    
-  }
+}
 }
