@@ -13,7 +13,7 @@ pipeline {
           }
         }
         stage('demo-1'){
-          stepa{
+          steps{
           echo 'this is demo-1'
           }
         }
