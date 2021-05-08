@@ -5,21 +5,40 @@ pipeline {
     
   stages {
 
-    stage('Install dependencies') {
-      steps {
-        echo 'npm install'
-      }
-    }
+    stage('demo') {
+      parallel{
+          stage('hello'){
+            steps{
+              echo 'hello world'
+            }
+          }
+            stage('good morning'){
+              steps{
+                echo 'good morning'
+              }
+            }
      
     stage('Build') {
-      steps {
-         echo 'npm run build'
-      }
+      parallel{
+        stage('good eve'){
+          steps{
+            echo 'good eve'
+          }
     } 
     stage('Test') {
       steps {
-        echo 'npm run test'
+        echo 'test'
       }
+      parallel{
+        stage('good afternoon'){
+          steps{
+            echo 'good afternoon'
+          }
+        }
+        stage('good nyt'){
+          steps{
+            echo 'good nyt'
+          }
     }
     
     
