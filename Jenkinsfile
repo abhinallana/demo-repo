@@ -17,6 +17,11 @@ pipeline {
           echo 'this is demo-1'
           }
         }
+        stage('demo-2'){
+          steps{
+            echo 'this is demo-2'
+          }
+        }
       }
     }
       stage('hello'){
@@ -26,8 +31,22 @@ pipeline {
             echo 'hello-1'
             }
           }
+          stage('hello-2'){
+            steps{
+              echo 'this is hello-2'
+            }
+          }
         }
       }
+    stage('final'){
+      parallel{
+        stage('final-1'){
+          steps{
+            echo 'this is final-1'
+          }
+        }
+      }
+    }
     
           
       
