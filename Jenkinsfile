@@ -7,44 +7,27 @@ pipeline {
 
     stage('demo') {
       parallel{
-          stage('hello'){
-            steps{
-              echo 'hello world'
-            }
-          }
-            stage('good morning'){
-              steps{
-                echo 'good morning'
-              }
-            }
+        stage('demo-0'){
+          echo 'this is a demo'
+        }
+        stage('demo-1'){
+          echo 'this is demo-1'
+        }
       }
     }
-     
-    stage('Build') {
-      parallel{
-        stage('good eve'){
-          steps{
-            echo 'good eve'
-          }
-    } 
-      }
- }
-    stage('Test') {
-      steps {
-        echo 'test'
-      }
-      parallel{
-        stage('good afternoon'){
-          steps{
-            echo 'good afternoon'
+      stage('hello'){
+        parallel{
+          stage('hello-1'){
+            echo 'hello-1'
           }
         }
-        stage('good nyt'){
-          steps{
-            echo 'good nyt'
-          }
       }
-   }
+    
+          
+      
+
+    
+    
+    
     }
-}
 }
