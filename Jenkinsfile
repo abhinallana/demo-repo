@@ -5,54 +5,37 @@ pipeline {
     
   stages {
 
-    stage('demo') {
-      parallel{
-        stage('demo-0'){
-          steps{
-          echo 'this is a demo'
-          }
-        }
-        stage('demo-1'){
-          steps{
-          echo 'this is demo-1'
-          }
-        }
-        stage('demo-2'){
-          steps{
-            echo 'this is demo-2'
-          }
-        }
+    stage('Install dependencies') {
+      steps {
+        sh 'npm install'
       }
     }
-      stage('hello'){
-        parallel{
-          stage('hello-1'){
-            steps{
-            echo 'hello-1'
+     
+    stage('Build') {
+      steps {
+         sh 'npm run build'
+      }
+    } 
+    stage('quality check via sonarqube') {
+      steps {
+         script{
+          def scannerHome = tool 'sonarqube';
+              withSonarQubeEnv("SonarQube"){
+                sh "${tool("sonarqube")}/bin/sonar-scanner\
+                -Dsonar.projectKey=my-project-demo\
+                -Dsonar.sources=.\
+                -Dsonar.host.url=http://127.0.0.1:9000\
             }
-          }
-          stage('hello-2'){
-            steps{
-              echo 'this is hello-2'
-            }
-          }
-        }
-      }
-    stage('final'){
-      parallel{
-        stage('final-1'){
-          steps{
-            echo 'this is final-1'
-          }
-        }
+         }
       }
     }
     
-          
-      
-
-    
-    
-    
-    }
+    stage('Package') {
+      steps {
+         sh 'ls -lrt'
+         sh "pwd"
+         sh "tar -zcf build.tar.gz build/"
+      }
+    }    
+  }
 }
