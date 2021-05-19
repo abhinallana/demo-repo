@@ -25,7 +25,7 @@ pipeline {
                 -Dsonar.projectKey=demo-1 \
                 -Dsonar.sources=. \
                 -Dsonar.host.url=http://127.0.0.1:9000 \
-                -Dsonar.login=fc7c38c09fc2479f0a53403c7ed0b0ee9858927e
+                -Dsonar.login=fc7c38c09fc2479f0a53403c7ed0b0ee9858927e"
             }
          }
       }
