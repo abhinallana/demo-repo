@@ -27,7 +27,7 @@ pipeline {
            -Dsonar.projectKey=demo-2 \
            -Dsonar.sources=. \
            -Dsonar.host.url=http://172.17.0.1:9000 \
-           -Dsonar.login=admin
+           -Dsonar.login=admin \
 	   -Dsonar.password=admin"
 
                }
