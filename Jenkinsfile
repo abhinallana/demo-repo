@@ -24,7 +24,7 @@ pipeline {
        script {
         def scannerHome = tool 'sonar-scanner';
            withSonarQubeEnv("sonarqube-container") {
-           sh "${tool("sonarqube")}/bin/sonar-scanner \
+           sh "${tool("sonar-scanner")}/bin/sonar-scanner \
            -Dsonar.projectKey=demo-2 \
            -Dsonar.sources=. \
            -Dsonar.host.url=http://172.17.0.1:9000 \
