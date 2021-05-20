@@ -7,10 +7,6 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-	rm -rf node_modules
-	rm package.json
-	rm package-lock.json
-	//svn up
 	npm install
 
       }
