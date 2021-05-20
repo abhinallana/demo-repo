@@ -7,13 +7,13 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
+	sh 'rm -rf node_modules'  
         sh 'npm install'
       }
     }
      
     stage('Build') {
-      steps {
-	 sh 'rm -rf node_modules'     
+       steps { 
          sh 'npm run build'
       }
     } 
