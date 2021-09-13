@@ -2,7 +2,19 @@ pipeline {
   agent any
     
   tools {nodejs "nodejs"}
-    
+  parameters {
+    extendedChoice( 
+        defaultValue: 'One,Two,Three,Four', 
+        description: 'please select the brand', 
+        multiSelectDelimiter: ',', 
+        name: 'environment', 
+        quoteValue: false, 
+        saveJSONParameterToFile: false, 
+        type: 'PT_CHECKBOX', 
+        value:'LTSB,BOS,HALIFAX,MBNA', 
+        visibleItemCount: 4)
+    }
+
   stages {
 
     stage('Install dependencies') {
