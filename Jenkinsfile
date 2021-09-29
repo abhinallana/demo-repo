@@ -44,10 +44,10 @@ pipeline {
            -Dsonar.login=admin \
 	   -Dsonar.password=admin"
 		   def branch = env.BRANCH_NAME
-		   echo ${branch}
-		   if(branch.contains('release')){
+		   //echo ${branch}
+		   if [[ "CI_BRANCH_NAME" == release/ ]]; then
 			   echo "release-1"
-		   }else{
+		   else{
 			   echo "new branch"
 		   }
                }
