@@ -44,7 +44,7 @@ pipeline {
            -Dsonar.login=admin \
 	   -Dsonar.password=admin"
 		   def branch = env.BRANCH_NAME
-		   println(branch.toString)
+		   println "${branch}"
 		   if(branch == 'release'){
 			   echo "release-1"
 		   }
