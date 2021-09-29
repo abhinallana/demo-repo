@@ -43,7 +43,8 @@ pipeline {
            -Dsonar.host.url=http://172.17.0.3:9000 \
            -Dsonar.login=admin \
 	   -Dsonar.password=admin"
-		   if(env.branch.contains('release')){
+		   def branch = "${GIT_BRANCH_NAME}"
+		   if(branch.contains('release')){
 			   echo "release-1"
 		   }else{
 			   echo "new branch"
