@@ -19,14 +19,15 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-	sh 'npm install'
-
+	//sh 'npm install'
+	echo "step-1"
       }
     }
      
     stage('Build') {
        steps { 
-         sh 'npm run build'
+         //sh 'npm run build'
+	  echo " step-2"
       }
     } 
     
@@ -37,9 +38,9 @@ pipeline {
         def scannerHome = tool 'sonar-scanner';
            withSonarQubeEnv("sonarqube-container") {
            sh "${tool("sonar-scanner")}/bin/sonar-scanner \
-           -Dsonar.projectKey=demo-2 \
+           -Dsonar.projectKey=demo \
            -Dsonar.sources=. \
-           -Dsonar.host.url=http://172.17.0.1:9000 \
+           -Dsonar.host.url=http://172.17.0.3:9000 \
            -Dsonar.login=admin \
 	   -Dsonar.password=admin"
 
@@ -52,9 +53,10 @@ pipeline {
     
     stage('Package') {
       steps {
-         sh 'ls -lrt'
-         sh "pwd"
-         sh "tar -zcf build.tar.gz build/"
+         //sh 'ls -lrt'
+         //sh "pwd"
+         //sh "tar -zcf build.tar.gz build/"
+	 echo "success"
       }
     }    
   }
