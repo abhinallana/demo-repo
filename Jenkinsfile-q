@@ -1,0 +1,22 @@
+pipeline {
+    agent any
+
+    stages {
+        stage("A") {
+            steps {
+                echo "stage A"
+            }
+        }
+
+        stage("B") {
+            when {
+                expression {
+                    !env.BRANCH_NAME.contains("HotFix")
+                }
+            }
+            steps {
+                echo "release branch"
+            }
+        }
+    }
+}
