@@ -43,13 +43,11 @@ pipeline {
            -Dsonar.host.url=http://172.17.0.3:9000 \
            -Dsonar.login=admin \
 	   -Dsonar.password=admin"
-		   def branch = env.BRANCH_NAME
-		   println "${branch}"
-		   if(branch == 'release'){
-			   echo "release-1"
-		   }
-		   else{
-			   echo "new branch"
+		   when{
+			   expression {
+				   env.BRANCH_NAME.contains("release")
+				   echo "release branch executed"
+			   }
 		   }
                }
            }
