@@ -47,6 +47,7 @@ pipeline {
 			   echo "release-1"
 		   }else{
 			   echo "new branch"
+		   }
                }
            }
        }
